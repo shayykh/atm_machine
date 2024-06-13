@@ -1,0 +1,20 @@
+{
+  "name": "@shayykh/atm-machine",
+  "version": "1.0.0",
+  "description": "An ATM model created through Typescript, Nodejs and Inquirer",
+  "main": "main.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "M. Shayan Shaikh",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^9.2.23"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7"
+  }
+}
