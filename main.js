@@ -1,9 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var inquirer_1 = require("inquirer");
-var myBalance = 10000; //Dollars
-var myPin = 1234;
-var pinAns = await inquirer_1.default.prompt([
+#! /usr/bin/env node
+import inquirer from "inquirer";
+let myBalance = 10000; //Dollars
+let myPin = 1234;
+const pinAns = await inquirer.prompt([
     {
         type: "number",
         name: "pin",
@@ -11,8 +10,8 @@ var pinAns = await inquirer_1.default.prompt([
     },
 ]);
 if (pinAns.pin === myPin) {
-    console.log("Your balance is $".concat(myBalance));
-    var option = await inquirer_1.default.prompt([
+    console.log(`Your current balance is $${myBalance}`);
+    const option = await inquirer.prompt([
         {
             type: "list",
             name: "key",
@@ -22,7 +21,7 @@ if (pinAns.pin === myPin) {
     ]);
     switch (option.key) {
         case "Deposit":
-            var deposit = await inquirer_1.default.prompt([
+            const deposit = await inquirer.prompt([
                 {
                     type: "number",
                     name: "amount",
@@ -34,12 +33,12 @@ if (pinAns.pin === myPin) {
             }
             else {
                 myBalance += deposit.amount;
-                console.log("You have deposited $".concat(deposit.amount));
-                console.log("Your new balance is $".concat(myBalance));
+                console.log(`You have deposited $${deposit.amount}`);
+                console.log(`Your new balance is $${myBalance}`);
             }
             break;
         case "Quick Withdraw":
-            var quickWithdraw = await inquirer_1.default.prompt([
+            const quickWithdraw = await inquirer.prompt([
                 {
                     type: "list",
                     name: "amount",
@@ -51,13 +50,13 @@ if (pinAns.pin === myPin) {
                 console.log("Insufficient funds");
             }
             else {
-                console.log("You have withdrawn $".concat(quickWithdraw.amount));
+                console.log(`You have withdrawn $${quickWithdraw.amount}`);
                 myBalance -= quickWithdraw.amount;
-                console.log("Your new balance is $".concat(myBalance));
+                console.log(`Your new balance is $${myBalance}`);
             }
             break;
         case "Cash Withdraw":
-            var cashWithdraw = await inquirer_1.default.prompt([
+            const cashWithdraw = await inquirer.prompt([
                 {
                     type: "number",
                     name: "amount",
@@ -68,13 +67,13 @@ if (pinAns.pin === myPin) {
                 console.log("Insufficient funds");
             }
             else {
-                console.log("You have withdrawn $".concat(cashWithdraw.amount));
+                console.log(`You have withdrawn $${cashWithdraw.amount}`);
                 myBalance -= cashWithdraw.amount;
-                console.log("Your new balance is $".concat(myBalance));
+                console.log(`Your new balance is $${myBalance}`);
             }
             break;
         case "Change Pin":
-            var changePin = await inquirer_1.default.prompt([
+            const changePin = await inquirer.prompt([
                 {
                     type: "number",
                     name: "newPin",
@@ -82,10 +81,10 @@ if (pinAns.pin === myPin) {
                 },
             ]);
             myPin = changePin.newPin;
-            console.log("Your pin has been changed to ".concat(changePin.newPin));
+            console.log(`Your pin has been changed to ${changePin.newPin}`);
             break;
         case "Check Balance":
-            console.log("Your balance is ".concat(myBalance));
+            console.log(`Your balance is ${myBalance}`);
             break;
         default:
             console.log("Invalid option");

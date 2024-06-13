@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 import inquirer from "inquirer";
 
 let myBalance = 10000; //Dollars
@@ -14,7 +16,7 @@ const pinAns = await inquirer.prompt(
 );
 
 if (pinAns.pin === myPin) {
-    console.log(`Your balance is $${myBalance}`);
+    console.log(`Your current balance is $${myBalance}`);
     const option = await inquirer.prompt(
         [
             {
